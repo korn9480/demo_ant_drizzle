@@ -4,7 +4,7 @@ import { Context } from "elysia";
 import type { JWTPayloadInput, JWTPayloadSpec } from "@elysiajs/jwt";
 import { NotFoundError, UnauthorizedError } from "@/middlewares/error";
 
-type ContextJWT<T extends Record<string, any> = {}> = Context<T> & {
+export type ContextJWT<T extends Record<string, any> = {}> = Context<T> & {
     jwt?: {
         sign: (payload: JWTPayloadInput & Record<string, any>) => Promise<string>;
         verify: (token: string) => Promise<(JWTPayloadSpec & { username?: string } & Record<string, any>) | false>;
