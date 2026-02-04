@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  mysql_db:
+    image: mysql:8.0 # Using a specific version (e.g., 8.0) is recommended over 'latest'
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234 # !! Change this to a secure password !!
+      MYSQL_DATABASE: demo
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql # Persist data using a named volume
+
+volumes:
+  mysql_data:
